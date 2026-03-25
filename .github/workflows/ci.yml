@@ -30,3 +30,9 @@ jobs:
       - name: Executar testes
         run: |
           python -m unittest -v tests/appTest.py
+      
+      - name : Relatorio de cobertura
+        run: |
+          pip install coverage
+          python -m coverage run -m unittest -v tests/appTest.py
+          python -m coverage report
