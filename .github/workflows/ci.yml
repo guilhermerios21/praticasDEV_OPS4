@@ -36,3 +36,5 @@ jobs:
           pip install coverage
           python -m coverage run -m unittest -v tests/appTest.py
           python -m coverage report
+      - name: Olá usuario
+        run: echo "Olá, ${{ github.actor }}!"
