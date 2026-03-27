@@ -36,5 +36,19 @@ jobs:
           pip install coverage
           python -m coverage run -m unittest -v tests/appTest.py
           python -m coverage report
+
       - name: Olá usuario
         run: echo "Olá, ${{ github.actor }}!"
+
+  deploy-prod-job:
+    runs-on: ubuntu-latest
+    needs: test
+    if: github.event_name == 'workflow_dispatch' && github.ref_name == 'main'
+    environment:
+      name: production
+    steps:
+      - name: Simular Deploy
+        run: |
+          echo "Implantando a branch ${{ github.ref_name }} em produção..."
+          sleep 20
+          echo "Implantação concluída com sucesso!"
